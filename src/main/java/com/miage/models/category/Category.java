@@ -1,6 +1,7 @@
 package com.miage.models.category;
 
 public abstract class Category {
+    private int id;
     private String name;
 
     public Category(String name) {
@@ -16,4 +17,12 @@ public abstract class Category {
     public abstract void add(Category category);
 
     public abstract void remove(Category category);
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

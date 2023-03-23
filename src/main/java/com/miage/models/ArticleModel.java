@@ -3,6 +3,7 @@ package com.miage.models;
 import com.miage.models.category.Category;
 
 public class ArticleModel {
+    private int id;
     private String label;
     private String brand;
     private double price;
@@ -55,5 +56,13 @@ public class ArticleModel {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
