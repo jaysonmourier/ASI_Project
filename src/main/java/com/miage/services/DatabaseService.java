@@ -68,6 +68,10 @@ public class DatabaseService {
         pstmt.setInt(parameterIndex, value);
     }
 
+    public void setFloat(PreparedStatement pstmt, int parameterIndex, float value) throws SQLException {
+        pstmt.setFloat(parameterIndex, value);
+    }
+
     public void setString(PreparedStatement pstmt, int parameterIndex, String value) throws SQLException {
         pstmt.setString(parameterIndex, value);
     }
