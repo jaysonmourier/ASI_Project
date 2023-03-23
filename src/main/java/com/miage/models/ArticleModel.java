@@ -18,6 +18,15 @@ public class ArticleModel {
         this.url = url;
     }
 
+    public ArticleModel(int id, String label, String brand, double price, Category category, String url) {
+        this.id = id;
+        this.label = label;
+        this.brand = brand;
+        this.price = price;
+        this.category = category;
+        this.url = url;
+    }
+
     public String getLabel() {
         return label;
     }

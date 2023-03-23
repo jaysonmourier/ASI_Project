@@ -30,7 +30,7 @@ public class CategoryDao {
                 String name = resultSet.getString("name");
                 int parentId = resultSet.getInt("parent_id");
 
-                Category category = parentId == 0 ? new CompositeCategory(name) : new SubCategory(name);
+                Category category = parentId == 0 ? new CompositeCategory(name) : new SubCategory(id, name);
                 categories.add(category);
             }
         } catch (SQLException e) {
@@ -52,7 +52,26 @@ public class CategoryDao {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 int parentId = resultSet.getInt("parent_id");
-                category = parentId == 0 ? new CompositeCategory(name) : new SubCategory(name);
+                category = parentId == 0 ? new CompositeCategory(name) : new SubCategory(id, name);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return category;
+    }
+
+    public Category getCategoryByName(String name) {
+        Category category = null;
+        String query = "SELECT * FROM categories WHERE name = ?";
+        try {
+            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            databaseService.setString(pstmt, 1, name);
+            ResultSet resultSet = databaseService.execute(pstmt);
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int parentId = resultSet.getInt("parent_id");
+                category = parentId == 0 ? new CompositeCategory(name) : new SubCategory(id, name);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -68,7 +87,12 @@ public class CategoryDao {
         try {
             PreparedStatement pstmt = databaseService.prepareStatement(query);
             databaseService.setString(pstmt, 1, category.getName());
-            databaseService.setInt(pstmt, 2, parentId);
+
+            if(parentId < 0) {
+                databaseService.setNull(pstmt, 2);
+            } else {
+                databaseService.setInt(pstmt, 2, parentId);
+            }
 
             success = databaseService.executeUpdate(pstmt) > 0;
         } catch (SQLException e) {

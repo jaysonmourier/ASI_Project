@@ -10,6 +10,10 @@ public class CompositeCategory extends Category {
         super(name);
     }
 
+    public CompositeCategory(int id, String name) {
+        super(id, name);
+    }
+
     public void print() {
         System.out.println("Category: " + getName());
         for (Category category : categories) {
@@ -23,5 +27,18 @@ public class CompositeCategory extends Category {
 
     public void remove(Category category) {
         categories.remove(category);
+    }
+
+    public String toString()
+    {
+        String str = new String();
+
+        str = "Téléphones :\n";
+
+        for (Category category : categories) {
+            str += "\t" + category + "\n";
+        }
+
+        return str;
     }
 }

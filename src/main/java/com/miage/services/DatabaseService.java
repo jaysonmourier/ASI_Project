@@ -80,6 +80,10 @@ public class DatabaseService {
         pstmt.setString(parameterIndex, value);
     }
 
+    public void setNull(PreparedStatement pstmt, int parameterIndex) throws SQLException {
+        pstmt.setNull(parameterIndex, Types.INTEGER);
+    }
+
     public ResultSet execute(PreparedStatement pstmt) throws SQLException {
         return pstmt.executeQuery();
     }
