@@ -30,7 +30,7 @@ public class CategoryDao {
                 String name = resultSet.getString("name");
                 int parentId = resultSet.getInt("parent_id");
 
-                Category category = parentId == 0 ? new CompositeCategory(name) : new SubCategory(id, name);
+                Category category = parentId == 0 ? new CompositeCategory(id, name) : new SubCategory(id, name);
                 categories.add(category);
             }
         } catch (SQLException e) {
@@ -52,7 +52,7 @@ public class CategoryDao {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 int parentId = resultSet.getInt("parent_id");
-                category = parentId == 0 ? new CompositeCategory(name) : new SubCategory(id, name);
+                category = parentId == 0 ? new CompositeCategory(id, name) : new SubCategory(id, name);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -71,7 +71,7 @@ public class CategoryDao {
             if (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 int parentId = resultSet.getInt("parent_id");
-                category = parentId == 0 ? new CompositeCategory(name) : new SubCategory(id, name);
+                category = parentId == 0 ? new CompositeCategory(id, name) : new SubCategory(id, name);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,7 +88,7 @@ public class CategoryDao {
             PreparedStatement pstmt = databaseService.prepareStatement(query);
             databaseService.setString(pstmt, 1, category.getName());
 
-            if(parentId < 0) {
+            if(parentId <= 0) {
                 databaseService.setNull(pstmt, 2);
             } else {
                 databaseService.setInt(pstmt, 2, parentId);
