@@ -24,3 +24,4 @@ hs_err_pid*
 
 target/ASIProjet/WEB-INF/classes/*
 target/classes/*
+target/*
