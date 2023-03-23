@@ -1,8 +1,6 @@
 package com.miage.models;
 
-import com.miage.models.category.Category;
-
-public class ArticleModel {
+public class Article {
     private int id;
     private String label;
     private String brand;
@@ -10,7 +8,7 @@ public class ArticleModel {
     private Category category;
     private String url;
 
-    public ArticleModel(String label, String brand, double price, Category category, String url) {
+    public Article(String label, String brand, double price, Category category, String url) {
         this.label = label;
         this.brand = brand;
         this.price = price;
@@ -18,7 +16,7 @@ public class ArticleModel {
         this.url = url;
     }
 
-    public ArticleModel(int id, String label, String brand, double price, Category category, String url) {
+    public Article(int id, String label, String brand, double price, Category category, String url) {
         this.id = id;
         this.label = label;
         this.brand = brand;

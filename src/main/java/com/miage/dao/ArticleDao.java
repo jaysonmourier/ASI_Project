@@ -1,7 +1,7 @@
 package com.miage.dao;
 
-import com.miage.models.ArticleModel;
-import com.miage.models.category.Category;
+import com.miage.models.Article;
+import com.miage.models.Category;
 import com.miage.services.DatabaseService;
 
 import java.sql.PreparedStatement;
@@ -20,8 +20,8 @@ public class ArticleDao {
         categoryDao = new CategoryDao();
     }
 
-    public List<ArticleModel> getAllArticles() {
-        List<ArticleModel> articles = new ArrayList<>();
+    public List<Article> getAllArticles() {
+        List<Article> articles = new ArrayList<>();
         String query = "SELECT * FROM articles";
 
         try {
@@ -35,7 +35,7 @@ public class ArticleDao {
                 String url = resultSet.getString("url");
 
                 Category category = categoryDao.getCategoryById(categoryId);
-                ArticleModel article = new ArticleModel(label, brand, price, category, url);
+                Article article = new Article(label, brand, price, category, url);
                 articles.add(article);
             }
         } catch (SQLException e) {
@@ -44,8 +44,8 @@ public class ArticleDao {
         return articles;
     }
 
-    public ArticleModel getArticleById(int articleId) {
-        ArticleModel article = null;
+    public Article getArticleById(int articleId) {
+        Article article = null;
         String query = "SELECT * FROM articles WHERE id = ?";
 
         try {
@@ -62,7 +62,7 @@ public class ArticleDao {
                 String url = resultSet.getString("url");
 
                 Category category = categoryDao.getCategoryById(categoryId);
-                article = new ArticleModel(label, brand, price, category, url);
+                article = new Article(label, brand, price, category, url);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -71,7 +71,7 @@ public class ArticleDao {
         return article;
     }
 
-    public boolean insertArticle(ArticleModel article) {
+    public boolean insertArticle(Article article) {
         String query = "INSERT INTO articles (label, brand, price, category_id, url) VALUES (?, ?, ?, ?, ?)";
         boolean success = false;
 
@@ -90,7 +90,7 @@ public class ArticleDao {
 
         return success;
     }
-    public boolean updateArticle(ArticleModel article, int articleId) {
+    public boolean updateArticle(Article article, int articleId) {
         String query = "UPDATE articles SET label = ?, brand = ?, price = ?, category_id = ?, url = ? WHERE id = ?";
         boolean success = false;
 
