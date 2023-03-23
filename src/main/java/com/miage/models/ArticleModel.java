@@ -55,6 +55,5 @@ public class ArticleModel {
 
     public void setUrl(String url) {
         this.url = url;
->>>>>>> 462a02ebf1c3d3e62cfab81a2e7d1ca661757a2c
     }
 }
