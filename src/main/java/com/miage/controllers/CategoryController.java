@@ -2,17 +2,23 @@ package com.miage.controllers;
 
 import com.miage.dao.CategoryDao;
 import com.miage.models.Category;
+import com.miage.models.CategoryResponse;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Path("/category")
 public class CategoryController {
+
+    private CategoryDao categoryDao;
+
+    public CategoryController() {
+        categoryDao = new CategoryDao();
+    }
 
     public String buildCategoryString(List<Category> categories, String indent) {
         StringBuilder categoryString = new StringBuilder();
@@ -34,7 +40,6 @@ public class CategoryController {
         return childCategories;
     }
 
-
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String getAllCategories() {
@@ -43,6 +48,64 @@ public class CategoryController {
         StringBuilder builder = new StringBuilder();
         afficherCategories(categories, builder, 0);
         return builder.toString();
+    }
+
+    @GET
+    @Path("/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCategoryByName(@PathParam("name") String name) {
+        Category category = categoryDao.getCategoryByName(name);
+        if (category == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Category not found for name: " + name).build();
+        }
+        return Response.ok(category).entity(new CategoryResponse(category.getName(), category.getParentId())).build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createCategory(Category category) {
+        Category existingCategory = categoryDao.getCategoryByName(category.getName());
+        if (existingCategory != null) {
+            return Response.status(Response.Status.CONFLICT).entity("Category already exists.").build();
+        }
+
+        if (categoryDao.insertCategory(category, category.getParentId())) {
+            CategoryResponse categoryResponse = new CategoryResponse(category.getName(), category.getParentId());
+            return Response.status(Response.Status.CREATED).entity(categoryResponse).build();
+        } else {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error creating category.").build();
+        }
+    }
+
+    @PUT
+    @Path("/{name}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateCategory(@PathParam("name") String name, Category newCategory) {
+        Category toUpdate = categoryDao.getCategoryByName(name);
+
+        if(toUpdate == null)
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity("Category not found for name: " + name)
+                    .build();
+
+        if (categoryDao.updateCategory(newCategory, toUpdate)) {
+            return Response.ok(newCategory).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).entity("Internal error.").build();
+        }
+    }
+
+    @DELETE
+    @Path("/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteCategory(@PathParam("name") String name) {
+        if (categoryDao.deleteCategoryByName(name)) {
+            return Response.status(Response.Status.NO_CONTENT).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).entity("Category not found for name: " + name).build();
+        }
     }
 
     public static void afficherCategories(List<Category> categories, StringBuilder builder, int indentation) {
