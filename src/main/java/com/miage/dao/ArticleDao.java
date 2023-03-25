@@ -34,8 +34,7 @@ public class ArticleDao {
                 int categoryId = resultSet.getInt("category_id");
                 String url = resultSet.getString("url");
 
-                Category category = categoryDao.getCategoryById(categoryId);
-                Article article = new Article(label, brand, price, category, url);
+                Article article = new Article(label, brand, price, categoryId, url);
                 articles.add(article);
             }
         } catch (SQLException e) {
@@ -61,8 +60,7 @@ public class ArticleDao {
                 int categoryId = resultSet.getInt("category_id");
                 String url = resultSet.getString("url");
 
-                Category category = categoryDao.getCategoryById(categoryId);
-                article = new Article(label, brand, price, category, url);
+                article = new Article(label, brand, price, categoryId, url);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,11 +74,15 @@ public class ArticleDao {
         boolean success = false;
 
         try {
+
+            if(categoryDao.getCategoryById(article.getCategory()) == null)
+                return false;
+
             PreparedStatement pstmt = databaseService.prepareStatement(query);
             databaseService.setString(pstmt, 1, article.getLabel());
             databaseService.setString(pstmt, 2, article.getBrand());
             databaseService.setDouble(pstmt, 3, article.getPrice());
-            databaseService.setInt(pstmt, 4, article.getCategory().getId());
+            databaseService.setInt(pstmt, 4, article.getCategory());
             databaseService.setString(pstmt, 5, article.getUrl());
 
             success = databaseService.executeUpdate(pstmt) > 0;
@@ -99,7 +101,7 @@ public class ArticleDao {
             databaseService.setString(pstmt, 1, article.getLabel());
             databaseService.setString(pstmt, 2, article.getBrand());
             databaseService.setDouble(pstmt, 3, article.getPrice());
-            databaseService.setInt(pstmt, 4, article.getCategory().getId());
+            databaseService.setInt(pstmt, 4, article.getCategory());
             databaseService.setString(pstmt, 5, article.getUrl());
             databaseService.setInt(pstmt, 6, articleId);
 

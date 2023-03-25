@@ -5,10 +5,12 @@ public class Article {
     private String label;
     private String brand;
     private double price;
-    private Category category;
+    private int category;
     private String url;
 
-    public Article(String label, String brand, double price, Category category, String url) {
+    public Article() {}
+
+    public Article(String label, String brand, double price, int category, String url) {
         this.label = label;
         this.brand = brand;
         this.price = price;
@@ -16,7 +18,7 @@ public class Article {
         this.url = url;
     }
 
-    public Article(int id, String label, String brand, double price, Category category, String url) {
+    public Article(int id, String label, String brand, double price, int category, String url) {
         this.id = id;
         this.label = label;
         this.brand = brand;
@@ -49,11 +51,11 @@ public class Article {
         this.price = price;
     }
 
-    public Category getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 
