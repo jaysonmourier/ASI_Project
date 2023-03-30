@@ -25,8 +25,9 @@ public class HelloWorldController {
         Category subcategory5 = new Category("Apple");
 
 
-        categoryDao.insertCategory(category, 0);
+        categoryDao.insertCategory(category,  null);
         category = categoryDao.getCategoryByName("Ordinateurs");
+
         int id = category.getId();
 
         categoryDao.insertCategory(subcategory, category.getId());
