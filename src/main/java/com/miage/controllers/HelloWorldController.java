@@ -29,20 +29,25 @@ public class HelloWorldController {
         category = categoryDao.getCategoryByName("Ordinateurs");
         int id = category.getId();
 
-        categoryDao.insertCategory(subcategory, category.getId());
+        System.out.println("id = " + id);
+
+        if(!categoryDao.insertCategory(subcategory, id)) return "error";
+        /*
         category = categoryDao.getCategoryByName("Ordinateurs portables");
         int id1 = category.getId();
+
+        System.out.println("id1 = " + id1);
+
         categoryDao.insertCategory(subcategory2, id);
         category = categoryDao.getCategoryByName("Ordinateurs fixes");
         int id2 = category.getId();
 
+        System.out.println("id2 = " + id2);
 
         categoryDao.insertCategory(subcategory3, id2);
 
         categoryDao.insertCategory(subcategory4, id1);
-        categoryDao.insertCategory(subcategory5, id1);
-
-
-        return "success";
+        categoryDao.insertCategory(subcategory5, id1);*/
+        return "success broooow";
     }
 }

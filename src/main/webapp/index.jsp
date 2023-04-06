@@ -45,10 +45,7 @@
             <p>
                 Vous pouvez explorer les différentes ressources disponibles en utilisant les points d'accès suivants (les liens peuvent être adaptés en fonction de la structure de votre API) :
             </p>
-            <ul>
-                <li><a href="/ASIProjet_war/api/hello">hello world</a></li>
-                <!-- Ajoutez d'autres liens vers les ressources de votre API ici -->
-            </ul>
+            <a class="btn btn-success" href="/ASIProjet_war/api/hello">Hello</a>
             <p>
                 N'hésitez pas à consulter notre documentation complète pour en savoir plus sur l'utilisation de notre API et les différentes fonctionnalités qu'elle propose.
             </p>

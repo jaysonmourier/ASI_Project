@@ -105,8 +105,8 @@ public class CategoryDao {
             databaseService.setString(pstmt, 1, category.getName());
 
             if(parentId != null) {
-
-                if(parentId == category.getParentId()) return false;
+                System.out.println(parentId + " " + category.getId());
+                if(parentId == category.getId()) return false;
 
                 if(parentId <= 0) {
                     databaseService.setNull(pstmt, 2);
