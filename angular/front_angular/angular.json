@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "HelloWorldAngular": {
+    "front_angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/hello-world-angular",
+            "outputPath": "dist/front_angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "HelloWorldAngular:build:production"
+              "browserTarget": "front_angular:build:production"
             },
             "development": {
-              "browserTarget": "HelloWorldAngular:build:development"
+              "browserTarget": "front_angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "HelloWorldAngular:build"
+            "browserTarget": "front_angular:build"
           }
         },
         "test": {
@@ -96,6 +96,6 @@
     }
   },
   "cli": {
-    "analytics": "74f3dece-4855-4502-87a8-f4a98fb07c31"
+    "analytics": false
   }
 }
