@@ -15,6 +15,7 @@ import { TelAccessoiresComponent } from './tel-accessoires/tel-accessoires.compo
 import { DisqueComponent } from './disque/disque.component';
 import { USBComponent } from './usb/usb.component';
 import { StockAccessoiresComponent } from './stock-accessoires/stock-accessoires.component';
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { StockAccessoiresComponent } from './stock-accessoires/stock-accessoires
     TelAccessoiresComponent,
     DisqueComponent,
     USBComponent,
-    StockAccessoiresComponent
+    StockAccessoiresComponent,
+    PanierComponent
   ],
   imports: [
     BrowserModule,

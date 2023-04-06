@@ -10,7 +10,6 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Home</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,10 +19,10 @@
             <a class="nav-link active" aria-current="page" routerLink="">Home</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup= "true">
               Ordinateurs
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
               <li><a class="dropdown-item" routerLink="/PcPortable">PC Portable</a></li>
               <li><a class="dropdown-item" routerLink="/PcBureau">PC de Bureau</a></li>
               <li><hr class="dropdown-divider"></li>
@@ -31,10 +30,10 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Téléphonies
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
               <li><a class="dropdown-item" routerLink="/SmartPhone">Smart Phone</a></li>
               <li><a class="dropdown-item" routerLink="/TelFixe">Tel. Fixe</a></li>
               <li><hr class="dropdown-divider"></li>
@@ -42,10 +41,10 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Stockage
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
               <li><a class="dropdown-item" routerLink="/Disque">Disque Dur</a></li>
               <li><a class="dropdown-item" routerLink="/USB">Clé USB</a></li>
               <li><hr class="dropdown-divider"></li>
@@ -53,13 +52,12 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerlink="/Connexion">Connexion</a>
+            <a class="nav-link active" aria-current="page" routerLink="/Panier">Panier</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/Connexion">Connexion</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </div>
   </nav>

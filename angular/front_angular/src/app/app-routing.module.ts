@@ -11,6 +11,7 @@ import { StockAccessoiresComponent } from './stock-accessoires/stock-accessoires
 import { TelAccessoiresComponent } from './tel-accessoires/tel-accessoires.component';
 import { TelFixeComponent } from './tel-fixe/tel-fixe.component';
 import { USBComponent } from './usb/usb.component';
+import {PanierComponent} from "./panier/panier.component";
 
 const routes: Routes = [
   {path:'',component: HomeComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:'Disque',component: DisqueComponent},
   {path:'USB',component: USBComponent},
   {path:'StockAccessoires',component: StockAccessoiresComponent},
+  {path:'Panier',component: PanierComponent},
 ];
 
 @NgModule({
