@@ -16,6 +16,7 @@ import { DisqueComponent } from './disque/disque.component';
 import { USBComponent } from './usb/usb.component';
 import { StockAccessoiresComponent } from './stock-accessoires/stock-accessoires.component';
 import { PanierComponent } from './panier/panier.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PanierComponent } from './panier/panier.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

@@ -8,5 +8,6 @@ public class Application extends ResourceConfig {
     public Application() {
         packages("com.miage.controllers");
         register(HelloWorldController.class);
+        register(CORSFilter.class);
     }
 }

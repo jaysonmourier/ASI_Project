@@ -20,6 +20,7 @@ public class ArticleController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Article> getAllArticles() {
+        System.out.println("GET ARTICLES");
         return articleDao.getAllArticles();
     }
 

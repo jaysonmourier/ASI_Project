@@ -16,7 +16,7 @@ import {PanierComponent} from "./panier/panier.component";
 const routes: Routes = [
   {path:'',component: HomeComponent},
   {path:'PcPortable',component: PcPortableComponent},
-  {path:'PcBureau',component: PcBureauComponent},
+  {path:'pc-bureau',component: PcBureauComponent},
   {path:'PcAccessoires',component: PcAccessoiresComponent},
   {path:'Connexion',component: ConnexionComponent},
   {path:'SmartPhone',component: SmartPhoneComponent},
