@@ -4,7 +4,7 @@
     <p class="mb-1">Marque : {{ article.brand }}</p>
     <p class="mb-1">Prix : {{ article.price }} €</p>
     <p class="mb-1">Catégorie : {{ article.category }}</p>
-    <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
+    <img [src]="article.url" width="200">
     <button class="btn btn-primary btn-sm float-right">Ajouter au panier</button>
   </li>
 </ul>
