@@ -34,7 +34,7 @@ public class ArticleDao {
                 int categoryId = resultSet.getInt("category_id");
                 String url = resultSet.getString("url");
 
-                Article article = new Article(label, brand, price, categoryId, url);
+                Article article = new Article(id, label, brand, price, categoryId, url);
                 articles.add(article);
             }
         } catch (SQLException e) {
