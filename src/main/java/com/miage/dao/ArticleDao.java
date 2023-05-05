@@ -69,6 +69,29 @@ public class ArticleDao {
         return article;
     }
 
+    public List<Article> getAllArticlesByCategory(int cid) {
+        List<Article> articles = new ArrayList<>();
+        String query = "SELECT * FROM articles WHERE category_id = " + cid;
+
+        try {
+            ResultSet resultSet = databaseService.query(query);
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String label = resultSet.getString("label");
+                String brand = resultSet.getString("brand");
+                double price = resultSet.getDouble("price");
+                int categoryId = resultSet.getInt("category_id");
+                String url = resultSet.getString("url");
+
+                Article article = new Article(id, label, brand, price, categoryId, url);
+                articles.add(article);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return articles;
+    }
+
     public boolean insertArticle(Article article) {
         String query = "INSERT INTO articles (label, brand, price, category_id, url) VALUES (?, ?, ?, ?, ?)";
         boolean success = false;

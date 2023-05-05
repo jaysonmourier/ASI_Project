@@ -1,5 +1,6 @@
 package com.miage.controllers;
 
+import com.google.gson.Gson;
 import com.miage.dao.ArticleDao;
 import com.miage.models.Article;
 
@@ -19,9 +20,19 @@ public class ArticleController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Article> getAllArticles() {
-        System.out.println("GET ARTICLES");
-        return articleDao.getAllArticles();
+    public String getAllArticles() {
+        List<Article> articles = articleDao.getAllArticles();
+        Gson gson = new Gson();
+        return gson.toJson(articles);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/category/{id}")
+    public String getAllArticlesInCategory(@PathParam("id") int id) {
+        List<Article> articles = articleDao.getAllArticlesByCategory(id);
+        Gson gson = new Gson();
+        return gson.toJson(articles);
     }
 
     @GET
