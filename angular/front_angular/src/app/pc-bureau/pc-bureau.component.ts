@@ -15,7 +15,7 @@ export class PcBureauComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get<Article[]>('http://localhost:8080/ASI_Project_war/api/articles')
+    this.http.get<Article[]>('http://localhost:8080/ASI_Project_war/api/articles/category/3')
       .subscribe((response: Article[]) => {
         this.articles = response;
       });

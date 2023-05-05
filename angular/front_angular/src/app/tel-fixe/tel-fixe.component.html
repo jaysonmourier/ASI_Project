@@ -1,28 +1,9 @@
-<div class="container">
-<div class="d-flex justify-content-between">
-  <div class="card" style="width: 18rem;">
-    <img src="/assets/images/tel-fixe/P1.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <img src="/assets/images/tel-fixe/P2.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <img src="/assets/images/tel-fixe/P3.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
-</div>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let article of articles">
+    <img [src]="article.url" width="200" class="float-left mr-3">
+    <h5 class="mb-1">{{ article.label }}</h5>
+    <p class="mb-1">Marque : {{ article.brand }}</p>
+    <p class="mb-1">Prix : {{ article.price }} €</p>
+    <button class="btn btn-primary btn-sm float-right">Ajouter au panier</button>
+  </li>
+</ul>
