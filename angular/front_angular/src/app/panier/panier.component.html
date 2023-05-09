@@ -1,1 +1,13 @@
-<p>panier works!</p>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let article of articles">
+    <img [src]="article.url" width="200" class="float-left mr-3">
+    <h5 class="mb-1">{{ article.label }}</h5>
+    <p class="mb-1">Marque : {{ article.brand }}</p>
+    <p class="mb-1">Prix : {{ article.price }} €</p>
+    <div class="form-group">
+      <label >Quantité :</label>
+      <span>{{quantities[article.id]}}</span>
+    </div>
+  </li>
+  <p>Total : {{total}} €</p>
+</ul>

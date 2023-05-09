@@ -4,7 +4,7 @@
     <h5 class="mb-1">{{ article.label }}</h5>
     <p class="mb-1">Marque : {{ article.brand }}</p>
     <p class="mb-1">Prix : {{ article.price }} €</p>
-    <button class="btn btn-primary btn-sm float-right">Ajouter au panier</button>
+    <button class="btn btn-primary btn-sm float-right" (click)="ajouterAuPanier(article)">Ajouter au panier</button>
   </li>
 </ul>
 
