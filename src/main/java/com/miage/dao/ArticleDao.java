@@ -60,7 +60,7 @@ public class ArticleDao {
                 int categoryId = resultSet.getInt("category_id");
                 String url = resultSet.getString("url");
 
-                article = new Article(label, brand, price, categoryId, url);
+                article = new Article(id, label, brand, price, categoryId, url);
             }
         } catch (SQLException e) {
             e.printStackTrace();

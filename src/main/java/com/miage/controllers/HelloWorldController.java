@@ -1,20 +1,32 @@
 package com.miage.controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.miage.dao.CategoryDao;
 import com.miage.models.Category;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("/hello")
 public class HelloWorldController {
-
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/name")
+    public String name(String json)
+    {
+        System.out.println("JSON OBJ : ");
+        Gson gson = new Gson();
+        System.out.println("1");
+        String name = gson.fromJson(json, String.class);
+        System.out.println("2");
+        return "name = " + name;
+    }
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String getHello() {
-
+    @Path("/hydrate")
+    public String hydrate() {
         CategoryDao categoryDao = new CategoryDao();
 
         Category category = new Category("Ordinateurs");
@@ -30,10 +42,8 @@ public class HelloWorldController {
 
         int id = category.getId();
 
-        System.out.println("id = " + id);
+        categoryDao.insertCategory(subcategory, id);
 
-        if(!categoryDao.insertCategory(subcategory, id)) return "error";
-        /*
         category = categoryDao.getCategoryByName("Ordinateurs portables");
         int id1 = category.getId();
 
@@ -48,7 +58,12 @@ public class HelloWorldController {
         categoryDao.insertCategory(subcategory3, id2);
 
         categoryDao.insertCategory(subcategory4, id1);
-        categoryDao.insertCategory(subcategory5, id1);*/
-        return "success broooow";
+        categoryDao.insertCategory(subcategory5, id1);
+        return "Hydrated";
+    }
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getHello() {
+        return "Hello, world!";
     }
 }

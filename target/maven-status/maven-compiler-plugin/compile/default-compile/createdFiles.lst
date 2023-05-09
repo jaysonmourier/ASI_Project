@@ -1,0 +1,12 @@
+com/miage/models/category/TCategorie.class
+com/miage/Application.class
+com/miage/dao/CategoryDao.class
+com/miage/dao/ArticleDao.class
+com/miage/services/DatabaseService.class
+com/miage/models/ArticleModel.class
+com/miage/dao/CategoryDao2.class
+com/miage/controllers/CategoryController.class
+com/miage/models/category/CompositeCategory.class
+com/miage/models/category/SubCategory.class
+com/miage/controllers/HelloWorldController.class
+com/miage/models/category/Category.class
