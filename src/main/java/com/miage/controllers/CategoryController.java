@@ -1,5 +1,6 @@
 package com.miage.controllers;
 
+import com.google.gson.Gson;
 import com.miage.dao.CategoryDao;
 import com.miage.models.Category;
 import com.miage.models.CategoryResponse;
@@ -47,7 +48,8 @@ public class CategoryController {
         List<Category> categories = categoryDao.getCategories();
         StringBuilder builder = new StringBuilder();
         afficherCategories(categories, builder, 0);
-        return builder.toString();
+        Gson gson = new Gson();
+        return gson.toJson(categories);
     }
 
     @GET

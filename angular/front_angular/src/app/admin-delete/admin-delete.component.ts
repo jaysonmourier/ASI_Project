@@ -8,13 +8,25 @@ import {Article} from "../Modele/article.modele";
 })
 export class AdminDeleteComponent {
 
+  articles: Article[] = [];
   constructor(private http: HttpClient) {
+    console.log("loaded");
   }
-  newArticle: Article = { id: 0, label: '', brand: '', price: 0, category: 0, url: '' };
 
-  onSubmit() {
-    this.http.post('/api/articles', this.newArticle).subscribe(response => {
-      console.log('Nouvel article ajouté');
+  ngOnInit() {
+    this.http.get<Article[]>('http://localhost:8080/ASI_Project_war/api/articles')
+      .subscribe((response: Article[]) => {
+        this.articles = response;
+      });
+  }
+
+  retirerDuPanier(articleId: number) {
+    // Envoyer une requête HTTP DELETE à l'API REST
+    this.http.delete('http://localhost:8080/ASI_Project_war/api/articles/' + articleId).subscribe(() => {
+      location.reload();
+    }, error => {
+      console.log(articleId);
+      console.error(error);
     });
   }
 

@@ -1,0 +1,17 @@
+.container {
+  position: relative;
+}
+
+.total-container {
+  left: 50%;
+
+}
+
+.total {
+  font-size: 24px;
+  text-align: center;
+}
+
+.list-group {
+  margin-bottom: 50px;
+}

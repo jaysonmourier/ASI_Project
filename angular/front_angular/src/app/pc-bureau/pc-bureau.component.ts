@@ -9,6 +9,7 @@ import { Article } from "../Modele/article.modele";
 })
 export class PcBureauComponent implements OnInit {
   articles: Article[] = [];
+  articleAjoute: boolean = false;
 
   constructor(private http: HttpClient) {
     console.log("loaded");
@@ -24,7 +25,10 @@ export class PcBureauComponent implements OnInit {
   ajouterAuPanier(article: Article) {
     // Envoyer une requête HTTP POST à l'API REST
     this.http.post('http://localhost:8080/ASI_Project_war/api/panier/ajouter/'+ article.id +'/1', this.articles).subscribe(() => {
-      alert('Article ajouté au panier !');
+      this.articleAjoute = true;
+      setTimeout(() => {
+        this.articleAjoute = false;
+      }, 2000);
     }, error => {
       console.error(error);
     });

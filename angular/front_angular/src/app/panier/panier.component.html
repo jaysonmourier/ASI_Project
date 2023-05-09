@@ -1,5 +1,6 @@
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let article of articles">
+<div class="container">
+  <ul class="list-group">
+  <li class="list-group-item my-2" *ngFor="let article of articles">
     <img [src]="article.url" width="200" class="float-left mr-3">
     <h5 class="mb-1">{{ article.label }}</h5>
     <p class="mb-1">Marque : {{ article.brand }}</p>
@@ -8,6 +9,15 @@
       <label >Quantité :</label>
       <span>{{quantities[article.id]}}</span>
     </div>
+    <button class="btn btn-primary btn-sm float-right btn-danger" (click)="retirerDuPanier(article.id)">Retirer du panier</button>
+
   </li>
-  <p>Total : {{total}} €</p>
-</ul>
+  </ul>
+  <div class="total-container">
+    <p class="total">Total : {{total | number:'1.2-2'}}  €</p>
+  </div>
+  <div class="text-center" style="margin-bottom: 50px;">
+    <button class="btn btn-primary">Valider</button>
+  </div>
+
+</div>

@@ -36,4 +36,14 @@ export class PanierComponent {
       });
   }
 
+  retirerDuPanier(articleId: number) {
+    // Envoyer une requête HTTP DELETE à l'API REST
+    this.http.delete('http://localhost:8080/ASI_Project_war/api/panier/retirer/' + articleId).subscribe(() => {
+      location.reload();
+    }, error => {
+      console.log(articleId);
+      console.error(error);
+    });
+  }
+
 }
