@@ -12,6 +12,8 @@ import { TelAccessoiresComponent } from './tel-accessoires/tel-accessoires.compo
 import { TelFixeComponent } from './tel-fixe/tel-fixe.component';
 import { USBComponent } from './usb/usb.component';
 import {PanierComponent} from "./panier/panier.component";
+import {AdminAddComponent} from "./admin-add/admin-add.component";
+import {AdminDeleteComponent} from "./admin-delete/admin-delete.component";
 
 const routes: Routes = [
   {path:'',component: HomeComponent},
@@ -26,6 +28,8 @@ const routes: Routes = [
   {path:'USB',component: USBComponent},
   {path:'StockAccessoires',component: StockAccessoiresComponent},
   {path:'Panier',component: PanierComponent},
+  {path:'admin-add',component: AdminAddComponent},
+  {path:'admin-delete',component: AdminDeleteComponent},
 ];
 
 @NgModule({
