@@ -25,7 +25,7 @@ export class AdminAddComponent {
   }
   onSubmit() {
     console.log(this.newArticle);
-    this.http.post('/api/articles', this.newArticle).subscribe(response => {
+    this.http.post('http://localhost:8080/ASI_Project_war/api/articles', this.newArticle).subscribe(response => {
       console.log('Nouvel article ajouté');
     });
 
