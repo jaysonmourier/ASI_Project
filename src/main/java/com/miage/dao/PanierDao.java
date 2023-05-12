@@ -7,6 +7,7 @@ import com.miage.services.DatabaseService;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class PanierDao {
 
@@ -44,7 +45,7 @@ public class PanierDao {
         boolean success = false;
 
         try {
-            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            PreparedStatement pstmt = databaseService.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             databaseService.setInt(pstmt, 1, articleId);
             databaseService.setInt(pstmt, 2, quantite);
             databaseService.setInt(pstmt, 3, quantite);
@@ -62,7 +63,7 @@ public class PanierDao {
         boolean success = false;
 
         try {
-            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            PreparedStatement pstmt = databaseService.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             databaseService.setInt(pstmt, 1, quantite);
             databaseService.setInt(pstmt, 2, articleId);
 
@@ -79,7 +80,7 @@ public class PanierDao {
         boolean success = false;
 
         try {
-            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            PreparedStatement pstmt = databaseService.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             databaseService.setInt(pstmt, 1, articleId);
 
             success = databaseService.executeUpdate(pstmt) > 0;

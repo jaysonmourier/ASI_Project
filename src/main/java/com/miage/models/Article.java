@@ -18,6 +18,10 @@ public class Article {
         this.url = url;
     }
 
+    public Article(int id) {
+        this.id = id;
+    }
+
     public Article(int id, String label, String brand, double price, int category, String url) {
         this.id = id;
         this.label = label;
@@ -26,6 +30,7 @@ public class Article {
         this.category = category;
         this.url = url;
     }
+
 
     public String getLabel() {
         return label;
