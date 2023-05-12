@@ -1,12 +1,12 @@
 package com.miage.dao;
 
 import com.miage.models.Article;
-import com.miage.models.Category;
 import com.miage.services.DatabaseService;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class ArticleDao {
         String query = "SELECT * FROM articles WHERE id = ?";
 
         try {
-            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            PreparedStatement pstmt = databaseService.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             databaseService.setInt(pstmt, 1, articleId);
             ResultSet resultSet = databaseService.execute(pstmt);
 
@@ -101,7 +101,7 @@ public class ArticleDao {
             if(categoryDao.getCategoryById(article.getCategory()) == null)
                 return false;
 
-            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            PreparedStatement pstmt = databaseService.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             databaseService.setString(pstmt, 1, article.getLabel());
             databaseService.setString(pstmt, 2, article.getBrand());
             databaseService.setDouble(pstmt, 3, article.getPrice());
@@ -120,7 +120,7 @@ public class ArticleDao {
         boolean success = false;
 
         try {
-            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            PreparedStatement pstmt = databaseService.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             databaseService.setString(pstmt, 1, article.getLabel());
             databaseService.setString(pstmt, 2, article.getBrand());
             databaseService.setDouble(pstmt, 3, article.getPrice());
@@ -141,7 +141,7 @@ public class ArticleDao {
         boolean success = false;
 
         try {
-            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            PreparedStatement pstmt = databaseService.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             databaseService.setInt(pstmt, 1, articleId);
 
             success = databaseService.executeUpdate(pstmt) > 0;

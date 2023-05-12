@@ -60,7 +60,7 @@ public class DatabaseService {
         conn.setAutoCommit(true);
     }
 
-    public PreparedStatement prepareStatement(String query) throws SQLException {
+    public PreparedStatement prepareStatement(String query, int returnGeneratedKeys) throws SQLException {
         return conn.prepareStatement(query);
     }
 
@@ -93,4 +93,3 @@ public class DatabaseService {
     }
 }
 
-    
