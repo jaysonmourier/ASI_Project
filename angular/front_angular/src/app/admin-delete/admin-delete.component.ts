@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Article} from "../Modele/article.modele";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-delete',
   templateUrl: './admin-delete.component.html',
@@ -18,6 +19,10 @@ export class AdminDeleteComponent {
       .subscribe((response: Article[]) => {
         this.articles = response;
       });
+  }
+
+  redirectToAdminAdd() {
+    window.location.href = 'http://localhost:4200/admin-add';
   }
 
   retirerDuPanier(articleId: number) {
