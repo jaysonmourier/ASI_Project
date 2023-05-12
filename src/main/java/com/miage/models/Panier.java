@@ -12,6 +12,11 @@ public class Panier {
     private Map<Article, Integer> articles;
     private double total;
 
+    public Panier(){
+        this.articles = new HashMap<>();
+        this.total = 0;
+    }
+
     public Panier(int id) {
         this.id = id;
         this.articles = new HashMap<>();
@@ -64,13 +69,19 @@ public class Panier {
     public Map<Integer, Integer> getArticleIdQuantities() {
         Map<Integer, Integer> articleIdQuantities = new HashMap<>();
         for (Map.Entry<Article, Integer> entry : articles.entrySet()) {
-            System.out.println("hello world");
             Article article = entry.getKey();
             int articleId = article.getId();
-            System.out.println(articleId);
             int quantity = entry.getValue();
             articleIdQuantities.put(articleId, quantity);
         }
         return articleIdQuantities;
+    }
+
+    public void setArticleIdQuantities(Map<Integer, Integer> articleIdQuantities) {
+        for (Map.Entry<Integer, Integer> entry : articleIdQuantities.entrySet()) {
+            Article article = new Article(entry.getKey());
+            int quantity = entry.getValue();
+            this.articles.put(article, quantity);
+        }
     }
 }

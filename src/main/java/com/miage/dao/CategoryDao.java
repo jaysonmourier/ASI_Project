@@ -6,6 +6,7 @@ import com.miage.services.DatabaseService;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,7 +62,7 @@ public class CategoryDao {
         String query = "SELECT * FROM categories WHERE id = ?";
 
         try {
-            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            PreparedStatement pstmt = databaseService.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             databaseService.setInt(pstmt, 1, categoryId);
             ResultSet resultSet = databaseService.execute(pstmt);
             if (resultSet.next()) {
@@ -81,7 +82,7 @@ public class CategoryDao {
         Category category = null;
         String query = "SELECT * FROM categories WHERE name = ?";
         try {
-            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            PreparedStatement pstmt = databaseService.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             databaseService.setString(pstmt, 1, name);
             ResultSet resultSet = databaseService.execute(pstmt);
             if (resultSet.next()) {
@@ -101,7 +102,7 @@ public class CategoryDao {
         boolean success = false;
 
         try {
-            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            PreparedStatement pstmt = databaseService.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             databaseService.setString(pstmt, 1, category.getName());
 
             if(parentId != null) {
@@ -136,7 +137,7 @@ public class CategoryDao {
 
             if(newCategory.getParentId() == toUpdate.getId()) return false;
 
-            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            PreparedStatement pstmt = databaseService.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             databaseService.setString(pstmt, 1, newCategory.getName());
             databaseService.setInt(pstmt, 2, newCategory.getParentId());
             databaseService.setString(pstmt, 3, toUpdate.getName());
@@ -154,7 +155,7 @@ public class CategoryDao {
         boolean success = false;
 
         try {
-            PreparedStatement pstmt = databaseService.prepareStatement(query);
+            PreparedStatement pstmt = databaseService.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             databaseService.setInt(pstmt, 1, categoryId);
 
             success = databaseService.executeUpdate(pstmt) > 0;
@@ -177,13 +178,13 @@ public class CategoryDao {
 
             // Supprimer les enregistrements dont le parent_id correspond à categoryId
             String deleteSubCategoriesQuery = "DELETE FROM categories WHERE parent_id = ?";
-            PreparedStatement pstmtSubCategories = databaseService.prepareStatement(deleteSubCategoriesQuery);
+            PreparedStatement pstmtSubCategories = databaseService.prepareStatement(deleteSubCategoriesQuery, Statement.RETURN_GENERATED_KEYS);
             databaseService.setInt(pstmtSubCategories, 1, categoryId);
             databaseService.executeUpdate(pstmtSubCategories);
 
             // Supprimer la catégorie elle-même
             String deleteCategoryQuery = "DELETE FROM categories WHERE name = ?";
-            PreparedStatement pstmtCategory = databaseService.prepareStatement(deleteCategoryQuery);
+            PreparedStatement pstmtCategory = databaseService.prepareStatement(deleteCategoryQuery, Statement.RETURN_GENERATED_KEYS);
             databaseService.setString(pstmtCategory, 1, name);
             success = databaseService.executeUpdate(pstmtCategory) > 0;
         } catch (SQLException e) {
