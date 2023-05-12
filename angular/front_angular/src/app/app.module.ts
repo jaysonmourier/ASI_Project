@@ -16,6 +16,10 @@ import { DisqueComponent } from './disque/disque.component';
 import { USBComponent } from './usb/usb.component';
 import { StockAccessoiresComponent } from './stock-accessoires/stock-accessoires.component';
 import { PanierComponent } from './panier/panier.component';
+import {HttpClientModule} from "@angular/common/http";
+import { AdminAddComponent } from './admin-add/admin-add.component';
+import { AdminDeleteComponent } from './admin-delete/admin-delete.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -32,11 +36,15 @@ import { PanierComponent } from './panier/panier.component';
     DisqueComponent,
     USBComponent,
     StockAccessoiresComponent,
-    PanierComponent
+    PanierComponent,
+    AdminAddComponent,
+    AdminDeleteComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

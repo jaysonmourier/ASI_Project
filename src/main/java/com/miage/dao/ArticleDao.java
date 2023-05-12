@@ -71,10 +71,11 @@ public class ArticleDao {
 
     public List<Article> getAllArticlesByCategory(int cid) {
         List<Article> articles = new ArrayList<>();
-        String query = "SELECT * FROM articles WHERE category_id = " + cid;
+        String query = " Select * from articles a Left join categories c on a.category_id = c.id where (c.parent_id = " + cid+" OR c.id ="+ cid+");";
 
         try {
             ResultSet resultSet = databaseService.query(query);
+            System.out.println(resultSet);
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String label = resultSet.getString("label");

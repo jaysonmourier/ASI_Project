@@ -1,1 +1,14 @@
-<p>smart-phone works!</p>
+<div style="width: 600px; margin: 5px auto; text-align: center" *ngIf="articleAjoute">
+  <div class="alert alert-primary">
+    Ajouté au panier
+  </div>
+</div>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let article of articles">
+    <img [src]="article.url" width="200" class="float-left mr-3">
+    <h5 class="mb-1">{{ article.label }}</h5>
+    <p class="mb-1">Marque : {{ article.brand }}</p>
+    <p class="mb-1">Prix : {{ article.price }} €</p>
+    <button class="btn btn-primary btn-sm float-right" (click)="ajouterAuPanier(article)">Ajouter au panier</button>
+  </li>
+</ul>

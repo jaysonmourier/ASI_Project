@@ -1,0 +1,26 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="label">Nom :</label>
+    <input type="text" class="form-control" id="label" [(ngModel)]="newArticle.label" name="label" required>
+  </div>
+  <div class="form-group">
+    <label for="brand">Marque :</label>
+    <input type="text" class="form-control" id="brand" [(ngModel)]="newArticle.brand" name="brand" required>
+  </div>
+  <div class="form-group">
+    <label for="price">Prix :</label>
+    <input type="number" class="form-control" id="price" [(ngModel)]="newArticle.price" name="price" required>
+  </div>
+  <div class="form-group">
+    <label for="subcategory">Catégorie :</label>
+    <select class="form-control" id="subcategory" [(ngModel)]="newArticle.category" name="subcategory" required>
+      <option *ngFor="let subcategory of subCategories" [value]="subcategory.id">{{ subcategory.name }}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="url">URL de l'image:</label>
+    <input type="text" class="form-control" id="url" [(ngModel)]="newArticle.url" name="url" required>
+  </div>
+  <button type="submit" class="btn btn-primary" >Ajouter</button>
+</form>
