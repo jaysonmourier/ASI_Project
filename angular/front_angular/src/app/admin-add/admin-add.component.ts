@@ -12,6 +12,7 @@ export class AdminAddComponent {
   newArticle: Article = { id: 0, label: '', brand: '', price: 0, category: 0, url: ''};
   categories: any;
   subCategories: any = [];
+  successMessage: string = '';
   ngOnInit() {
     this.http.get<any>('http://localhost:8080/ASI_Project_war/api/category').subscribe(data => {
       this.categories = data;
@@ -27,6 +28,7 @@ export class AdminAddComponent {
     console.log(this.newArticle);
     this.http.post('http://localhost:8080/ASI_Project_war/api/articles', this.newArticle).subscribe(response => {
       console.log('Nouvel article ajouté');
+      this.successMessage = 'L\'article a été ajouté avec succès.';
     });
 
   }
